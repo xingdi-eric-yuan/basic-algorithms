@@ -19,6 +19,14 @@ An exercise of implementing basic tree/graph/search algs using c++.
 
 * Dijkstra's alg
 
+###TODO
+
+* A* Search
+
+* Kruskal's Plan
+
+* Prim's Plan
+
 The MIT License (MIT)
 ------------------
 
