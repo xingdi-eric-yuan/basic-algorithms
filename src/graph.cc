@@ -2,21 +2,21 @@
 #include "graph.h"
 using namespace std;
 
-void concatenate(GraphNode *a, GraphNode *b, unordered_map<string, int> &graph_distance, int distance){
+void concatenate(GraphNode *a, GraphNode *b, unordered_map<string, double> &graph_distance, double distance){
 
     a -> neighbor.push_back(b);
     b -> neighbor.push_back(a);
     string str = to_string(a -> id) + '-' + to_string(b -> id);
-    unordered_map<string, int>::const_iterator got = graph_distance.find (str);
+    unordered_map<string, double>::const_iterator got = graph_distance.find (str);
     if(got == graph_distance.end()){
         graph_distance[str] = distance;
     }
 }
 
-int getDistance(GraphNode *a, GraphNode *b, unordered_map<string, int> &graph_distance){
-    int res = INT_MAX;
+double getDistance(GraphNode *a, GraphNode *b, const unordered_map<string, double> &graph_distance){
+    double res = (double)INT_MAX;
     string str = to_string(a -> id) + '-' + to_string(b -> id);
-    unordered_map<string, int>::const_iterator got = graph_distance.find (str);
+    unordered_map<string, double>::const_iterator got = graph_distance.find (str);
     if(got != graph_distance.end()) res = graph_distance.at(str);
     else{
         str = to_string(b -> id) + '-' + to_string(a -> id);
@@ -37,7 +37,7 @@ void printGraphBFS(GraphNode *a){
         GraphNode* p = Q.front();
         Q.pop();
         gray.insert(p -> id);
-        cout<<"Here comes node id "<<p -> id<<", val = "<<p -> val<<", range = "<<p -> range<<endl;
+        cout<<"Here comes node id "<<p -> id<<", val = "<<p -> val<<", cost = "<<p -> cost<<endl;
         for(int i = 0; i < p -> neighbor.size(); i++){
             if( black.find(p -> neighbor[i] -> id) == black.end() &&
                 gray.find(p -> neighbor[i] -> id) == gray.end() ){ 
@@ -59,7 +59,7 @@ void printGraphDFS(GraphNode *a){
         if(S.empty()) break;
         GraphNode* p = S.top();
         S.pop();
-        cout<<"Here comes node id "<<p -> id<<", val = "<<p -> val<<", range = "<<p -> range<<endl;
+        cout<<"Here comes node id "<<p -> id<<", val = "<<p -> val<<", cost = "<<p -> cost<<endl;
         for(int i = 0; i < p -> neighbor.size(); i++){
             S.push(p -> neighbor[i]);
         }

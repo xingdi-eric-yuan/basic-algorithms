@@ -169,6 +169,13 @@ GraphNode* getTreeTop(BinaryTreeNode *root){
     return root -> graphnode;
 }
 
+bool isInTree(BinaryTreeNode *root, GraphNode *g){
+    if(!root) return false;
+    if(!g) return false;
+    if(root -> graphnode == g) return true;
+    return isInTree(root -> left, g) || isInTree(root -> right, g);
+}
+
 
 
 

@@ -19,9 +19,9 @@ An exercise of implementing basic tree/graph/search algs using c++.
 
 * Dijkstra's alg
 
-###TODO
-
 * A* Search
+
+###TODO
 
 * Kruskal's Plan
 

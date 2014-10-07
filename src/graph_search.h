@@ -4,4 +4,17 @@
 using namespace std;
 
 
-int getDijkstraDistance(GraphNode*, GraphNode*, unordered_map<string, int> &);
+void Dijkstra(GraphNode*, const unordered_map<string, double> &);
+
+double getDijkstraDistance(GraphNode*, GraphNode*, const unordered_map<string, double>&);
+
+
+void reconstruct_path(unordered_map<GraphNode*, GraphNode*> &, GraphNode* );
+
+void A_star(GraphNode *, GraphNode *, const unordered_map<string, double> &);
+
+
+
+
+
+

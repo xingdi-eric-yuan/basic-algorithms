@@ -4,12 +4,12 @@
 
 using namespace std;
 
-void minHeapify(BinaryTreeNode*);
+void minHeapify(BinaryTreeNode*, int mode = 0);
 
-void buildMinHeap(BinaryTreeNode*);
+void buildMinHeap(BinaryTreeNode*, int mode = 0);
 
-GraphNode* extractTop(BinaryTreeNode*&);
+GraphNode* extractTop(BinaryTreeNode*&, int mode = 0);
 
-void deleteTop(BinaryTreeNode*&);
+void deleteTop(BinaryTreeNode*&, int mode = 0);
 
-void minHeapInsert(BinaryTreeNode*&, GraphNode*);
+void minHeapInsert(BinaryTreeNode*&, GraphNode*, int mode = 0);

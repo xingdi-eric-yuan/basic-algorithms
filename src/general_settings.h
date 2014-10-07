@@ -18,5 +18,9 @@
 #define LEFT 0
 #define RIGHT 1
 
+#define HEAP_VAL 0
+#define HEAP_F_SCORE 1
+
+
 using namespace std;
 

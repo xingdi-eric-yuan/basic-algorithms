@@ -32,3 +32,5 @@ void cutLeaf(BinaryTreeNode*, int);
 void cutLastLeaf(BinaryTreeNode*);
 
 GraphNode* getTreeTop(BinaryTreeNode *);
+
+bool isInTree(BinaryTreeNode*, GraphNode*);

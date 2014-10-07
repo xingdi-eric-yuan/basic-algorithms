@@ -5,11 +5,14 @@ using namespace std;
 
 // Definition for singly-linked list.
 struct GraphNode {
-    int val;
+    double val;
     int id;
-    int range;
+    double cost;
+    double estimate;
+    double g_score;
+    double f_score;
     vector<GraphNode*> neighbor;
-    GraphNode(int x, int y, int z) : id(x), val(y), range(z) {}
+    GraphNode(double x, int y, double z, double w) : id(x), val(y), cost(z), estimate(w) {}
 };
 
 struct BinaryTreeNode{

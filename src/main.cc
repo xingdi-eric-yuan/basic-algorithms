@@ -4,28 +4,29 @@ using namespace std;
 
 int main(){
 
-    unordered_map<string, int> graph_distance;
+    unordered_map<string, double> graph_distance;
 
-    GraphNode a(0, 0, INT_MAX);
-    GraphNode b(1, 1, INT_MAX);
-    GraphNode c(2, 2, INT_MAX);
-    GraphNode d(3, 3, INT_MAX);
-    GraphNode e(4, 4, INT_MAX);
-    GraphNode f(5, 5, INT_MAX);
+    GraphNode a(0, 0, INT_MAX, 4);
+    GraphNode b(1, 1, INT_MAX, 2);
+    GraphNode c(2, 2, INT_MAX, 4);
+    GraphNode d(3, 3, INT_MAX, 4.5);
+    GraphNode e(4, 4, INT_MAX, 2);
+    GraphNode f(5, 5, INT_MAX, INT_MAX);
+    GraphNode g(6, 6, INT_MAX, INT_MAX);
 
-    concatenate(&a, &b, graph_distance, 7);
-    concatenate(&a, &f, graph_distance, 14);
-    concatenate(&a, &c, graph_distance, 9);
-    concatenate(&b, &c, graph_distance, 10);
-    concatenate(&b, &d, graph_distance, 15);
-    concatenate(&c, &d, graph_distance, 11);
-    concatenate(&c, &f, graph_distance, 2);
-    concatenate(&d, &e, graph_distance, 6);
-    concatenate(&e, &f, graph_distance, 9);
+    concatenate(&f, &a, graph_distance, 1.5);
+    concatenate(&a, &b, graph_distance, 2);
+    concatenate(&b, &c, graph_distance, 3);
+    concatenate(&c, &g, graph_distance, 4);
+    concatenate(&f, &d, graph_distance, 2);
+    concatenate(&d, &e, graph_distance, 3);
+    concatenate(&e, &g, graph_distance, 2);
 
-    int dis = getDijkstraDistance(&a, &e, graph_distance);
-//    cout<<"dis = "<<dis<<endl;
-    printGraphDFS(&a);
+    //double dis = getDijkstraDistance(&a, &e, graph_distance);
+    //cout<<"dis = "<<dis<<endl;
+    //printGraphDFS(&a);
+    A_star(&f, &g, graph_distance);
+
 
 	return 0;
 }

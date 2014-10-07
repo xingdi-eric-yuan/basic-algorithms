@@ -3,9 +3,9 @@
 
 using namespace std;
 
-void concatenate(GraphNode*, GraphNode*, unordered_map<string, int> &, int);
+void concatenate(GraphNode*, GraphNode*, unordered_map<string, double> &, double);
 
-int getDistance(GraphNode*, GraphNode*, unordered_map<string, int> &);
+double getDistance(GraphNode*, GraphNode*, const unordered_map<string, double> &);
 
 void printGraphBFS(GraphNode*);
 
