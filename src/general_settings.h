@@ -9,8 +9,10 @@
 #include <iostream>
 
 #include "data_structure.h"
+#include "linked_list.h"
 #include "binary_tree.h"
 #include "graph.h"
+#include "array.h"
 #include "minheap.h"
 #include "graph_search.h"
 
