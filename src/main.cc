@@ -27,7 +27,7 @@ int main(){
     //printGraphDFS(&a);
     A_star(&f, &g, graph_distance);
 
-
+    graph_distance.clear();
 	return 0;
 }
 

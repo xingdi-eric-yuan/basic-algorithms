@@ -54,6 +54,8 @@ void A_star(GraphNode *a, GraphNode *b, const unordered_map<string, double> &gra
         GraphNode* current = extractTop(openset, HEAP_F_SCORE);
         if(current == b){
             reconstruct_path(came_from, current);
+            came_from.clear();
+            visited.clear();
             return;
         }
         visited.insert(current);
@@ -69,6 +71,8 @@ void A_star(GraphNode *a, GraphNode *b, const unordered_map<string, double> &gra
             }
         }
     }
+    came_from.clear();
+    visited.clear();
     cout<<"Can't find the second input node..."<<endl;
 }
 
