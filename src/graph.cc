@@ -27,7 +27,7 @@ double getDistance(GraphNode *a, GraphNode *b, const unordered_map<string, doubl
 }
 
 void printGraphBFS(GraphNode *a){
-    if(!a) return;
+    if(!a) cout<<"NULL"<<endl;;
     unordered_set<int> black;
     unordered_set<int> gray;
     queue<GraphNode*> Q;
@@ -50,7 +50,7 @@ void printGraphBFS(GraphNode *a){
 }
 
 void printGraphDFS(GraphNode *a){
-    if(!a) return;
+    if(!a) cout<<"NULL"<<endl;;
     unordered_set<int> black;
     stack<GraphNode*> S;
     S.push(a);

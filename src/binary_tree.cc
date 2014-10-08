@@ -31,10 +31,9 @@ void tree2Vectors(BinaryTreeNode *root, int height, vector<vector<BinaryTreeNode
 }
 
 void printTree(BinaryTreeNode *root){
-    if(!root) return;
+    if(!root) cout<<"NULL"<<endl;;
     vector<vector<BinaryTreeNode*> > layer;
     tree2Vectors(root, 0, layer);
-
     for(int i = 0; i < layer.size(); i++){
         cout<<"layer["<<i<<"] : ";
         for(int j = 0; j < layer[i].size(); j++){
@@ -121,12 +120,12 @@ void binaryTreeInsert(BinaryTreeNode*& T, GraphNode* value){
         T = newone;
         return;
     }
-    std::queue<BinaryTreeNode*> visited,  unvisited; 
+    std::queue<BinaryTreeNode*> visited, unvisited; 
     BinaryTreeNode *newone = new BinaryTreeNode(value);
     BinaryTreeNode* current;
     unvisited.push(T); 
     while(!unvisited.empty()){
-        current = (unvisited.front()); 
+        current = unvisited.front(); 
         if(!current -> left){
             current -> left = newone;
             newone -> parent = current;
@@ -206,3 +205,46 @@ BinaryTreeNode* leftRotate(BinaryTreeNode *root, BinaryTreeNode *rot){
     rot ->parent = pivot;
     return res;
 }
+
+BinaryTreeNode* mostLeft(BinaryTreeNode *node){
+    BinaryTreeNode *res = node;
+    while(res -> left) res = res -> left;
+    return res;
+}
+
+BinaryTreeNode* mostRight(BinaryTreeNode *node){
+    BinaryTreeNode *res = node;
+    while(res -> right) res = res -> right;
+    return res;
+}
+
+BinaryTreeNode* successor(BinaryTreeNode *node){
+    if(!node) return NULL;
+    if(node -> right) return mostLeft(node -> right);
+    else{
+        BinaryTreeNode *res = node;
+        while(1){
+            if(!res -> parent) return NULL;
+            if(res == res -> parent -> left) return res -> parent;
+            res = res -> parent;
+        }
+    }
+}
+
+BinaryTreeNode* predecessor(BinaryTreeNode *node){
+    if(!node) return NULL;
+    if(node -> left) return mostRight(node -> left);
+    else{
+        BinaryTreeNode *res = node;
+        while(1){
+            if(!res -> parent) return NULL;
+            if(res == res -> parent -> right) return res -> parent;
+            res = res -> parent;
+        }
+    }
+}
+
+
+
+
+

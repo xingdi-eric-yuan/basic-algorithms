@@ -2,6 +2,7 @@
 using namespace std;
 
 void printArray(const vector<double>& arr){
+    if(arr.empty()) cout<<"Empty Array"<<endl;
     for(int i = 0; i < arr.size(); i++){
         cout<<arr[i];
         if(i != arr.size() - 1) cout<<", ";

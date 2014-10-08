@@ -38,3 +38,11 @@ bool isInTree(BinaryTreeNode*, GraphNode*);
 BinaryTreeNode* rightRotate(BinaryTreeNode*, BinaryTreeNode*);
 
 BinaryTreeNode* leftRotate(BinaryTreeNode*, BinaryTreeNode*);
+
+BinaryTreeNode* mostLeft(BinaryTreeNode*);
+
+BinaryTreeNode* mostRight(BinaryTreeNode*);
+
+BinaryTreeNode* successor(BinaryTreeNode*);
+
+BinaryTreeNode* predecessor(BinaryTreeNode*);

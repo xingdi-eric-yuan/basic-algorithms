@@ -76,10 +76,10 @@ int main(){
 
 	BinaryTreeNode *root = createBinaryTree(vec, 0, vec.size() - 1);
 	printTree(root);
-	root = rightRotate(root, root -> right);
-	printTree(root);
-//	root = leftRotate(root, root);
-//	printTree(root);
+
+	BinaryTreeNode *succ = predecessor(root -> left -> left);
+	if(succ) cout<<succ -> graphnode -> id<<endl;
+	else cout<<"NULL"<<endl;
 
 	return 0;
 }
