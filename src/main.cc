@@ -43,6 +43,7 @@ int main(){
     printLinkedList(head);
 */
 
+/*
     vector<double> vec(100, 0.0);
     for(int i = 0; i < vec.size(); i++){
     	vec[i] = (double)i;
@@ -56,7 +57,29 @@ int main(){
     random_shuffle(vec.begin(), vec.end());
 	mergeSort(vec, 0, vec.size() - 1);
     printArray(vec);
+*/
+    vector<GraphNode*> vec;
+    GraphNode a(0, 0, INT_MAX, 4);
+    GraphNode b(1, 1, INT_MAX, 2);
+    GraphNode c(2, 2, INT_MAX, 4);
+    GraphNode d(3, 3, INT_MAX, 4.5);
+    GraphNode e(4, 4, INT_MAX, 2);
+    GraphNode f(5, 5, INT_MAX, INT_MAX);
+    GraphNode g(6, 6, INT_MAX, INT_MAX);
+    vec.push_back(&a);
+    vec.push_back(&b);
+    vec.push_back(&c);
+    vec.push_back(&d);
+    vec.push_back(&e);
+    vec.push_back(&f);
+    vec.push_back(&g);
 
+	BinaryTreeNode *root = createBinaryTree(vec, 0, vec.size() - 1);
+	printTree(root);
+	root = rightRotate(root, root -> right);
+	printTree(root);
+//	root = leftRotate(root, root);
+//	printTree(root);
 
 	return 0;
 }

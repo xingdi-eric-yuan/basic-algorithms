@@ -176,7 +176,33 @@ bool isInTree(BinaryTreeNode *root, GraphNode *g){
     return isInTree(root -> left, g) || isInTree(root -> right, g);
 }
 
+BinaryTreeNode* rightRotate(BinaryTreeNode *root, BinaryTreeNode* rot){
+    BinaryTreeNode *res = root;
+    if(!rot -> left && ! rot -> right) return res;
+    BinaryTreeNode *pivot = rot -> left;
+    rot -> left = pivot -> right;
+    if(pivot -> right) pivot -> right -> parent = rot;
+    pivot -> parent = rot -> parent;
+    if(!rot -> parent) res = pivot;
+    elif(rot == rot -> parent -> left) rot -> parent -> left = pivot;
+    else rot -> parent -> right = pivot;
+    pivot -> right = rot;
+    rot ->parent = pivot;
+    return res;
+}
 
+BinaryTreeNode* leftRotate(BinaryTreeNode *root, BinaryTreeNode *rot){
 
-
-
+    BinaryTreeNode *res = root;
+    if(!rot -> left && ! rot -> right) return res;
+    BinaryTreeNode *pivot = rot -> right;
+    rot -> right = pivot -> left;
+    if(pivot -> left) pivot -> left -> parent = rot;
+    pivot -> parent = rot -> parent;
+    if(!rot -> parent) res = pivot;
+    elif(rot == rot -> parent -> left) rot -> parent -> left = pivot;
+    else rot -> parent -> right = pivot;
+    pivot -> left = rot;
+    rot ->parent = pivot;
+    return res;
+}

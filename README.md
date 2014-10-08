@@ -21,6 +21,10 @@ An exercise of implementing basic tree/graph/search algs using c++.
 
 * A* Search
 
+* Quick/Merge Sort
+
+* Tree Rotation
+
 ###TODO
 
 * Kruskal's Plan

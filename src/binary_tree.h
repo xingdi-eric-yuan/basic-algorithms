@@ -34,3 +34,7 @@ void cutLastLeaf(BinaryTreeNode*);
 GraphNode* getTreeTop(BinaryTreeNode *);
 
 bool isInTree(BinaryTreeNode*, GraphNode*);
+
+BinaryTreeNode* rightRotate(BinaryTreeNode*, BinaryTreeNode*);
+
+BinaryTreeNode* leftRotate(BinaryTreeNode*, BinaryTreeNode*);
