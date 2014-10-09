@@ -149,17 +149,19 @@ bool isEmpty(BinaryTreeNode* root){
     return (!root);
 }
 
-void cutLeaf(BinaryTreeNode* A,  int num){
+void cutLeaf(BinaryTreeNode*& A,  int num){
+    if(!A -> left && ! A -> right && num == 0) A = NULL;
     serializeTree(A);
     BinaryTreeNode *tmp = findId(A, num);
-    if (tmp -> id == tmp -> parent -> left -> id){
+    if (tmp == tmp -> parent -> left){
         tmp -> parent -> left = NULL;
-    }elif(tmp -> id == tmp -> parent -> right -> id){
+    }elif(tmp == tmp -> parent -> right){
         tmp -> parent -> right = NULL;
     }
 }
 
-void cutLastLeaf(BinaryTreeNode* root){
+void cutLastLeaf(BinaryTreeNode*& root){
+    if(!root -> left && ! root -> right) root = NULL;
     int HeapSize = getTreeSize(root);
     if(HeapSize > 0) cutLeaf(root, HeapSize - 1);
 }

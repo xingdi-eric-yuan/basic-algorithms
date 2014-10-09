@@ -2,7 +2,8 @@
 
 using namespace std;
 
-void minHeapify(BinaryTreeNode* A, int mode){  
+void minHeapify(BinaryTreeNode* A, int mode){ 
+    if(!A -> left && !A -> right) return; 
     double minimal;
     int flag = -1; 
     if(mode == HEAP_VAL){
@@ -23,6 +24,16 @@ void minHeapify(BinaryTreeNode* A, int mode){
         }
         if(A -> right && A -> right -> graphnode -> f_score <= minimal){
             minimal = A -> right -> graphnode -> f_score;
+            flag = RIGHT;
+        }
+    }elif(mode == HEAP_COST){
+        minimal = A -> graphnode -> cost;
+        if(A -> left && A -> left -> graphnode -> cost <= minimal){
+            minimal = A -> left -> graphnode -> cost;
+            flag = LEFT;
+        }
+        if(A -> right && A -> right -> graphnode -> cost <= minimal){
+            minimal = A -> right -> graphnode -> cost;
             flag = RIGHT;
         }
     }
@@ -75,6 +86,7 @@ void deleteTop(BinaryTreeNode*& T, int mode){
 void minHeapInsert(BinaryTreeNode*& T,  GraphNode* ins, int mode){
     binaryTreeInsert(T, ins);
     serializeTree(T);
+    if(!T -> left && !T -> right) return;
     int count_temp = getTreeSize(T) - 1;
     if(mode == HEAP_VAL){
         while (count_temp > 0 && findId(T, count_temp) -> parent -> graphnode -> val > findId(T, count_temp) -> graphnode -> val){
@@ -83,6 +95,11 @@ void minHeapInsert(BinaryTreeNode*& T,  GraphNode* ins, int mode){
         }
     }elif(mode == HEAP_F_SCORE){
         while (count_temp > 0 && findId(T, count_temp) -> parent -> graphnode -> f_score > findId(T, count_temp) -> graphnode -> f_score){
+            graphnodeSwap(findId(T, count_temp), findId(T, count_temp) -> parent);
+            count_temp = findId(T, count_temp) -> parent -> id;
+        }
+    }elif(mode == HEAP_COST){
+        while (count_temp > 0 && findId(T, count_temp) -> parent -> graphnode -> cost > findId(T, count_temp) -> graphnode -> cost){
             graphnodeSwap(findId(T, count_temp), findId(T, count_temp) -> parent);
             count_temp = findId(T, count_temp) -> parent -> id;
         }

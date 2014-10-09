@@ -6,26 +6,22 @@ void Dijkstra(GraphNode *a, const unordered_map<string, double> &graph_distance)
     if(!a) return;
     a -> cost = 0;
     GraphNode *p = a;
-    vector<BinaryTreeNode*> Q;
+    BinaryTreeNode *heaproot = NULL;
     while(1){
-        if(p != a && Q.empty()) break;
-        BinaryTreeNode *heaproot = NULL;
+        if(!p && isEmpty(heaproot)) break;
         for(int i = 0; i < p -> neighbor.size(); i++){
             if(visited.find(p -> neighbor[i] -> id) == visited.end()){
-                minHeapInsert(heaproot, p -> neighbor[i]);
-                p -> neighbor[i] -> cost = p -> neighbor[i] -> cost < 
+                minHeapInsert(heaproot, p -> neighbor[i], HEAP_COST);
+                p -> neighbor[i] -> cost = p -> neighbor[i] -> cost <= 
                                             (p -> cost + getDistance(p, p -> neighbor[i], graph_distance)) ?
                                             p -> neighbor[i] -> cost :
                                             (p -> cost + getDistance(p, p -> neighbor[i], graph_distance));
             }
         }
         visited.insert(p -> id);
-        Q.push_back(heaproot);
-
-        while(!Q.empty() && isEmpty(Q[0])) Q.erase(Q.begin());
-        while(!isEmpty(Q[0]) && visited.find(getTreeTop(Q[0]) -> id) != visited.end()) deleteTop(Q[0]);
-        while(!Q.empty() && isEmpty(Q[0])) Q.erase(Q.begin());
-        if(!Q.empty() && ! isEmpty(Q[0])) p = extractTop(Q[0]);
+        p = NULL;
+        while(!isEmpty(heaproot) && visited.find(getTreeTop(heaproot) -> id) != visited.end()) deleteTop(heaproot, HEAP_COST);
+        if(!isEmpty(heaproot)) p = extractTop(heaproot, HEAP_COST); 
     }
 }
 

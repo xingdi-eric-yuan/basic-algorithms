@@ -27,9 +27,9 @@ void binaryTreeInsert(BinaryTreeNode*&, GraphNode*);
 
 bool isEmpty(BinaryTreeNode*);
 
-void cutLeaf(BinaryTreeNode*, int);
+void cutLeaf(BinaryTreeNode*&, int);
 
-void cutLastLeaf(BinaryTreeNode*);
+void cutLastLeaf(BinaryTreeNode*&);
 
 GraphNode* getTreeTop(BinaryTreeNode *);
 

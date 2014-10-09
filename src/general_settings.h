@@ -22,6 +22,7 @@
 
 #define HEAP_VAL 0
 #define HEAP_F_SCORE 1
+#define HEAP_COST 2
 
 
 using namespace std;

@@ -10,7 +10,6 @@ void printArray(const vector<double>& arr){
     cout<<endl;
 }
 
-
 int partition(vector<double> &input, int head, int tail){
     int left = 0;
     int right = tail - head;
@@ -31,8 +30,6 @@ int partition(vector<double> &input, int head, int tail){
     return left + head;
 }
 
-
-
 void quickSort(vector<double> &input, int head, int tail){
     if(head < tail){
         int mid = partition(input, head, tail);   
@@ -40,7 +37,6 @@ void quickSort(vector<double> &input, int head, int tail){
         quickSort(input, mid + 1, tail);
     }
 }
-
 
 void merge(vector<double> &input, int head, int mid, int tail){
 
