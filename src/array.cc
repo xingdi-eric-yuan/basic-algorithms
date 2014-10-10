@@ -91,3 +91,84 @@ double quickSelect(vector<double>& input, int head, int tail, int nth){
     return (double)INT_MIN;
 }
 
+void rightRotate(vector<double>& input, int offset){
+    if(offset == 0) return;
+    vector<double> output;
+    output.insert(output.begin(), input.begin(), input.begin() + input.size() - offset);
+    output.insert(output.begin(), input.begin() + input.size() - offset, input.end());
+    swap(input, output);
+    output.clear();
+}
+
+void leftRotate(vector<double>& input, int offset){
+    if(offset == 0) return;
+    vector<double> output;
+    output.insert(output.begin(), input.begin(), input.begin() + offset);
+    output.insert(output.begin(), input.begin() + offset, input.end());
+    swap(input, output);
+    output.clear();
+}
+
+// simple binary search, returns the address, or -1 (if not exist)
+int binarySearch(vector<double>& input, int head, int tail, double val){
+    int res = -1;
+    if(input.empty()) return res;
+    if(head > tail) return res;
+    int mid = head + (tail - head) / 2;
+    if(input[mid] == val) return mid;
+    elif(input[mid] < val) return binarySearch(input, mid + 1, tail, val);
+    else return binarySearch(input, head, mid - 1, val);
+}
+
+// General version of binary search, 
+// Rotated vectors are supported.
+// returns address, or -1 (if not exist)
+int generalBinarySearch(vector<double>& input, int head, int tail, double val){
+    int res = -1;
+    if(input.empty()) return res;
+    if(head > tail) return res;
+    int mid = head + (tail - head) / 2;
+    if(input[mid] == val) return mid;
+    elif(input[mid] < val){
+        if(input[mid] < input[tail]){
+            // right hand side is regular array
+            res = binarySearch(input, mid + 1, tail, val);
+            if(res > 0) return res;
+            else return generalBinarySearch(input, head, mid - 1, val);
+        }else{
+            // right hand side is rotated
+            return generalBinarySearch(input, mid + 1, tail, val);
+        }
+    }else{
+        if(input[mid] < input[tail]){
+            // right hand side is regular array
+            return generalBinarySearch(input, head, mid - 1, val);
+        }else{
+            // right hand side is rotated
+            res = binarySearch(input, head, mid - 1, val);
+            if(res > 0) return res;
+            else return generalBinarySearch(input, mid + 1, tail, val);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
