@@ -46,3 +46,10 @@ BinaryTreeNode* mostRight(BinaryTreeNode*);
 BinaryTreeNode* successor(BinaryTreeNode*);
 
 BinaryTreeNode* predecessor(BinaryTreeNode*);
+
+BinaryTreeNode* lowestCommonAncestor(BinaryTreeNode*, BinaryTreeNode*, BinaryTreeNode*);
+
+
+
+
+

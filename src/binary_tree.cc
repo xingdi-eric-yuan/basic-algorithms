@@ -246,6 +246,19 @@ BinaryTreeNode* predecessor(BinaryTreeNode *node){
     }
 }
 
+BinaryTreeNode* lowestCommonAncestor(BinaryTreeNode *root, BinaryTreeNode *p, BinaryTreeNode *q){
+    if(!root) return NULL;
+    if(root == p || root == q) return root;
+    BinaryTreeNode *l = lowestCommonAncestor(root -> left, p, q);
+    BinaryTreeNode *r = lowestCommonAncestor(root -> right, p, q);
+    if(l && r) return root;
+    if(l) return l;
+    if(r) return r;
+    return NULL;
+}
+
+
+
 
 
 
