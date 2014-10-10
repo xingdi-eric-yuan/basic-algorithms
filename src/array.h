@@ -12,3 +12,5 @@ void quickSort(vector<double>&, int, int);
 void merge(vector<double>&, int, int, int);
 
 void mergeSort(vector<double>&, int, int);
+
+double quickSelect(vector<double>&, int, int, int);

@@ -74,15 +74,20 @@ void mergeSort(vector<double> &input, int head, int tail){
     }   
 }
 
-
-
-
-
-
-
-
-
-
-
-
+// select the nth largest element in the array.
+// If it does not exist, return INT_MIN
+double quickSelect(vector<double>& input, int head, int tail, int nth){
+    cout<<"head = "<<head<<", tail = "<<tail<<", nth = "<<nth<<endl;
+    printArray(input);
+    if(input.empty()) return (double)INT_MIN;
+    if(nth < 0) return (double)INT_MIN;
+    if(nth > input.size()) return (double)INT_MIN;
+    if(head < tail){
+        int pivot = partition(input, head, tail);
+        if(pivot == nth) return input[pivot];
+        elif(pivot > nth) return quickSelect(input, head, pivot - 1, nth);
+        else return quickSelect(input, pivot + 1, tail, nth);
+    }
+    return (double)INT_MIN;
+}
 
