@@ -11,15 +11,16 @@ void Dijkstra(GraphNode *a, const unordered_map<string, double> &graph_distance)
         if(!p && isEmpty(heaproot)) break;
         for(int i = 0; i < p -> neighbor.size(); i++){
             if(visited.find(p -> neighbor[i] -> id) == visited.end()){
-                minHeapInsert(heaproot, p -> neighbor[i], HEAP_COST);
                 p -> neighbor[i] -> cost = p -> neighbor[i] -> cost <= 
                                             (p -> cost + getDistance(p, p -> neighbor[i], graph_distance)) ?
                                             p -> neighbor[i] -> cost :
                                             (p -> cost + getDistance(p, p -> neighbor[i], graph_distance));
+                minHeapInsert(heaproot, p -> neighbor[i], HEAP_COST);
             }
         }
         visited.insert(p -> id);
         p = NULL;
+        buildMinHeap(openset, HEAP_COST);
         while(!isEmpty(heaproot) && visited.find(getTreeTop(heaproot) -> id) != visited.end()) deleteTop(heaproot, HEAP_COST);
         if(!isEmpty(heaproot)) p = extractTop(heaproot, HEAP_COST); 
     }
@@ -47,6 +48,7 @@ void A_star(GraphNode *a, GraphNode *b, const unordered_map<string, double> &gra
     BinaryTreeNode *openset = NULL;
     minHeapInsert(openset, start, HEAP_F_SCORE);
     while(!isEmpty(openset)){
+        buildMinHeap(openset, HEAP_F_SCORE);
         GraphNode* current = extractTop(openset, HEAP_F_SCORE);
         if(current == b){
             reconstruct_path(came_from, current);
