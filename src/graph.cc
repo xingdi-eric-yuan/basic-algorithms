@@ -32,11 +32,11 @@ void printGraphBFS(GraphNode *a){
     unordered_set<int> gray;
     queue<GraphNode*> Q;
     Q.push(a);
+    gray.insert(a -> id);
     while(1){
         if(Q.empty()) break;
         GraphNode* p = Q.front();
         Q.pop();
-        gray.insert(p -> id);
         cout<<"Here comes node id "<<p -> id<<", val = "<<p -> val<<", cost = "<<p -> cost<<endl;
         for(int i = 0; i < p -> neighbor.size(); i++){
             if( black.find(p -> neighbor[i] -> id) == black.end() &&
@@ -55,13 +55,13 @@ void printGraphDFS(GraphNode *a){
     stack<GraphNode*> S;
     S.push(a);
     while(!S.empty()){
-        while(!S.empty() && black.find(S.top() -> id) != black.end()) S.pop();
-        if(S.empty()) break;
+        //while(!S.empty() && black.find(S.top() -> id) != black.end()) S.pop();
+        //if(S.empty()) break;
         GraphNode* p = S.top();
         S.pop();
         cout<<"Here comes node id "<<p -> id<<", val = "<<p -> val<<", cost = "<<p -> cost<<endl;
         for(int i = 0; i < p -> neighbor.size(); i++){
-            S.push(p -> neighbor[i]);
+            if(black.find(p -> neighbor[i] -> id == black.end())) S.push(p -> neighbor[i]);
         }
         black.insert(p -> id);
     }
